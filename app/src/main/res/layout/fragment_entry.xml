@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.entry.EntryFragment"
+    android:background="@drawable/gradient_background">
+
+    <Button
+        android:id="@+id/button_input_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Input Weight"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <Button
+        android:id="@+id/button_input_calories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Input Calories"
+        app:layout_constraintTop_toBottomOf="@id/button_input_weight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <Button
+        android:id="@+id/button_input_exercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Input Exercise"
+        app:layout_constraintTop_toBottomOf="@id/button_input_calories"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+
+    <Button
+        android:id="@+id/button_time_exercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Stopwatch"
+        app:layout_constraintTop_toBottomOf="@id/button_input_exercise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="72dp"/>
+
+    <RadioGroup
+        android:id="@+id/radio_group_exercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/button_input_exercise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/radio_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Minutes"
+            android:layout_marginEnd="12dp" />
+
+        <RadioButton
+            android:id="@+id/radio_steps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Steps" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/edit_text_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Value"
+        app:layout_constraintTop_toBottomOf="@id/radio_group_exercise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/button_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        android:visibility="gone" />
+
+
+    <TextView
+        android:id="@+id/tvTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00:00"
+        android:textSize="24sp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/button_time_exercise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Start/Stop Timer Button -->
+    <Button
+        android:id="@+id/btnStartStop"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Start Timer"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tvTimer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnReset"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        android:layout_marginEnd="8dp"/>
+
+    <!-- Reset Timer Button -->
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Reset Timer"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tvTimer"
+        app:layout_constraintStart_toEndOf="@id/btnStartStop"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"/>
+
+    <!-- Save Time Button -->
+    <Button
+        android:id="@+id/btnSaveTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Exercise Time"
+        android:visibility="gone"
+        android:enabled="false"
+        app:layout_constraintTop_toBottomOf="@id/btnReset"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

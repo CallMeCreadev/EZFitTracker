@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EZFitTracker</string>
+    <string name="title_home">Home</string>
+    <string name="title_entry">Input Data</string>
+    <string name="title_database">Database</string>
+    <string name="title_graph">Charts</string>
+</resources>

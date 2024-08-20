@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Font Size Heading -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Font size:"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Font Size Radio Group -->
+    <RadioGroup
+        android:id="@+id/font_size_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Small" />
+
+        <RadioButton
+            android:id="@+id/radio_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium" />
+
+        <RadioButton
+            android:id="@+id/radio_large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Large" />
+    </RadioGroup>
+
+    <!-- Spacing between sections -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Weight Unit Heading -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weight Measured in:"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Weight Unit Radio Group -->
+    <RadioGroup
+        android:id="@+id/weight_unit_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_lbs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="lbs" />
+
+        <RadioButton
+            android:id="@+id/radio_kgs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kgs" />
+    </RadioGroup>
+
+    <!-- Confirm Button -->
+    <Button
+        android:id="@+id/confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:layout_marginTop="32dp" />
+</LinearLayout>

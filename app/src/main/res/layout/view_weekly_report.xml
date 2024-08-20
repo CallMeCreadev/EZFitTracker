@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- All content inside a LinearLayout for vertical stacking -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Heading for Calories -->
+        <TextView
+            android:id="@+id/weekly_calories_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Average Daily Calories Over the Last 7 Days"
+            android:textSize="18sp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- TextView for Calories -->
+        <TextView
+            android:id="@+id/weekly_calories_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calories: "
+            android:textSize="16sp"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Heading for Weight -->
+        <TextView
+            android:id="@+id/weekly_weight_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Average Weight Over the Last 7 Days"
+            android:textSize="18sp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- TextView for Weight -->
+        <TextView
+            android:id="@+id/weekly_weight_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Weight: "
+            android:textSize="16sp"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Heading for Exercise -->
+        <TextView
+            android:id="@+id/weekly_exercise_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Average Daily Exercise Over the Last 7 Days"
+            android:textSize="18sp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- TextView for Exercise -->
+        <TextView
+            android:id="@+id/weekly_exercise_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Exercise: "
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp" />
+
+    </LinearLayout>
+
+</ScrollView>

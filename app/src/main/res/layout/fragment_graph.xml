@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="5dp"
+    tools:context=".ui.graphs.GraphsFragment"
+    android:background="@drawable/gradient_background">
+
+    <TextView
+    android:id="@+id/text_graph"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:textAlignment="center"
+    android:textSize="18sp"
+    android:text="30 Day Chart Choose up to 2 Data Views (Average replaces missing data) "
+    app:layout_constraintBottom_toTopOf="@id/line_chart"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+    <com.github.mikephil.charting.charts.LineChart
+    android:id="@+id/line_chart"
+    android:layout_width="0dp"
+    app:layout_constraintTop_toBottomOf="@id/text_graph"
+    app:layout_constraintBottom_toTopOf="@id/button_weight_data"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_margin="16dp"
+    android:layout_height="0dp"
+    app:layout_constraintHeight_percent="0.55"/>
+
+    <com.google.android.material.button.MaterialButton
+    android:id="@+id/button_weight_data"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="Weight Data"
+    app:layout_constraintBottom_toTopOf="@+id/button_calorie_data"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/line_chart"
+    app:layout_constraintHorizontal_bias="0.5"
+    android:layout_marginTop="4dp" />
+
+    <com.google.android.material.button.MaterialButton
+    android:id="@+id/button_calorie_data"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="Calorie Data"
+    app:layout_constraintBottom_toTopOf="@+id/button_exercise_data"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/button_weight_data"
+    app:layout_constraintHorizontal_bias="0.5"
+    android:layout_marginTop="4dp" />
+
+    <com.google.android.material.button.MaterialButton
+    android:id="@+id/button_exercise_data"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="Exercise Data"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/button_calorie_data"
+    app:layout_constraintHorizontal_bias="0.5"
+    android:layout_marginTop="4dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
