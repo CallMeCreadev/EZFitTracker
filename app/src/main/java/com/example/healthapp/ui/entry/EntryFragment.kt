@@ -3,7 +3,6 @@ package com.example.healthapp.ui.entry
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.os.SystemClock
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +35,8 @@ class EntryFragment : Fragment() {
     private lateinit var btnSaveTime: MaterialButton
     private lateinit var btnReset: MaterialButton
     private var isKg: Boolean = false
+
+    private var isSaveTimeClicked = false // Track the state of the Save Time button
 
     private val handler = Handler(Looper.getMainLooper())
     private val updateTimerRunnable = object : Runnable {
@@ -81,26 +82,15 @@ class EntryFragment : Fragment() {
         buttonUpdate.setOnClickListener { handleUpdate() }
 
         btnStartStop.setOnClickListener {
-            if (entryViewModel.isTimerRunning) {
-                entryViewModel.stopTimer()
-            } else {
-                entryViewModel.startTimer()
-                handler.post(updateTimerRunnable) // Start updating the timer
-            }
-            updateStartStopButton()
+            onStartStopClicked()
         }
 
         btnReset.setOnClickListener {
-            entryViewModel.resetTimer()
-            updateTimerUI()
-            updateStartStopButton()
+            onResetClicked()
         }
 
         btnSaveTime.setOnClickListener {
-            val minutes = entryViewModel.saveElapsedTime()
-            val exerciseEntry = ExerciseEntry(minutes = minutes, timestamp = System.currentTimeMillis())
-            entryViewModel.insert(exerciseEntry)
-            showUpdateDialog("Exercise updated 🎉", true)
+            onSaveTimeClicked()
         }
 
         updateTimerUI() // Update the timer UI based on the ViewModel state
@@ -221,7 +211,8 @@ class EntryFragment : Fragment() {
         tvTimer.visibility = View.VISIBLE
         btnSaveTime.visibility = View.VISIBLE
         btnReset.visibility = View.VISIBLE
-        btnSaveTime.isEnabled = false
+        updateSaveTimeButton() // Update Save Exercise Time button state based on initial timer value
+        updateResetButton() // Update Reset button state
     }
 
     private fun hideTimerView() {
@@ -241,8 +232,57 @@ class EntryFragment : Fragment() {
 
     private fun updateStartStopButton() {
         btnStartStop.text = if (entryViewModel.isTimerRunning) "Stop Timer" else "Start Timer"
-        btnSaveTime.isEnabled = !entryViewModel.isTimerRunning
-        btnReset.isEnabled = entryViewModel.getElapsedTime() > 0
+        updateSaveTimeButton() // Update Save Exercise Time button based on current timer state
+        updateResetButton() // Update Reset Timer button based on current timer state
+    }
+
+    private fun onSaveTimeClicked() {
+        if (entryViewModel.getElapsedTime() > 0 && !entryViewModel.isTimerRunning) {
+            // Save the exercise time
+            val minutes = entryViewModel.saveElapsedTime()
+            val exerciseEntry = ExerciseEntry(minutes = minutes, timestamp = System.currentTimeMillis())
+            entryViewModel.insert(exerciseEntry)
+            showUpdateDialog("Exercise updated 🎉", true)
+
+            // Reset the timer after saving
+            entryViewModel.resetTimer()
+            updateTimerUI() // Update the timer display to reflect reset
+            updateSaveTimeButton() // Ensure Save Exercise Time button is disabled after reset
+            updateResetButton() // Update Reset Timer button after reset
+        }
+    }
+
+
+    private fun onStartStopClicked() {
+        if (entryViewModel.isTimerRunning) {
+            entryViewModel.stopTimer()
+        } else {
+            entryViewModel.startTimer()
+            handler.post(updateTimerRunnable) // Start updating the timer
+        }
+        updateStartStopButton()
+    }
+
+
+
+
+    private fun updateSaveTimeButton() {
+        // Enable the Save Exercise Time button only when the timer is stopped and the elapsed time is greater than zero
+        btnSaveTime.isEnabled = !entryViewModel.isTimerRunning && entryViewModel.getElapsedTime() > 0
+    }
+
+    private fun updateResetButton() {
+        // Disable the Reset Timer button when the timer is running or zero
+        btnReset.isEnabled = !entryViewModel.isTimerRunning && entryViewModel.getElapsedTime() > 0
+    }
+
+    private fun onResetClicked() {
+        if (!entryViewModel.isTimerRunning && entryViewModel.getElapsedTime() > 0) {
+            entryViewModel.resetTimer()
+            updateTimerUI() // Update the timer display after reset
+            updateSaveTimeButton() // Ensure Save Exercise Time button is disabled after reset
+            updateResetButton() // Update Reset Timer button after reset
+        }
     }
 
     override fun onPause() {
